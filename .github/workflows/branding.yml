@@ -1,0 +1,62 @@
+name: SHAHEEN-YS Branding Validation
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+
+jobs:
+  branding:
+    name: Validate Visual Identity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Branding Files
+        run: |
+          set -e
+
+          REQUIRED_FILES=(
+            "app/dashboard/static/branding/brand.css"
+            "app/dashboard/static/branding/brand.js"
+            "app/dashboard/static/branding/manifest.json"
+          )
+
+          for FILE in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$FILE" ]; then
+              echo "Missing branding file: $FILE"
+              exit 1
+            fi
+          done
+
+          echo "All branding files exist."
+
+      - name: Validate Manifest JSON
+        run: |
+          python -m json.tool \
+            app/dashboard/static/branding/manifest.json \
+            > /dev/null
+
+          echo "Brand manifest JSON: OK"
+
+      - name: Check SHAHEEN-YS Brand Name
+        run: |
+          if ! grep -Rni \
+              "SHAHEEN-YS" \
+              app/dashboard/static/branding; then
+            echo "Brand name was not found in branding assets."
+            exit 1
+          fi
+
+          echo "Brand name validation: OK"

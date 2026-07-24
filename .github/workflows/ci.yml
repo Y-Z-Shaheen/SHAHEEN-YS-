@@ -1,0 +1,150 @@
+name: SHAHEEN-YS CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shaheen-ys-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Code Quality & Tests
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Python Syntax Check
+        run: |
+          python -m compileall -q app
+          python -m py_compile wsgi.py
+
+      - name: Initialize Database
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          python -c "
+          from app.database import initialize_database
+          initialize_database()
+          print('Database initialization: OK')
+          "
+
+      - name: WSGI Import Test
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          SHAHEEN_YS_ENV: test
+        run: |
+          python -c "
+          from wsgi import application
+          print('WSGI import: OK')
+          print(f'Application: {application.name}')
+          "
+
+      - name: Database Health Test
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          python -c "
+          from app.database import check_database_health
+
+          result = check_database_health()
+
+          print(result)
+
+          if result.get('status') != 'healthy':
+              raise SystemExit('Database health check failed')
+
+          print('Database health: OK')
+          "
+
+      - name: Run Pytest
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          SHAHEEN_YS_ENV: test
+        run: |
+          if find tests -type f -name "test_*.py" -o -name "*_test.py" | grep -q .; then
+            pytest -q
+          else
+            echo "No pytest tests found. Skipping."
+          fi
+
+      - name: Validate Visual Identity
+        run: |
+          test -f app/dashboard/static/branding/brand.css
+          test -f app/dashboard/static/branding/brand.js
+          test -f app/dashboard/static/branding/manifest.json
+
+          echo "Visual identity assets: OK"
+
+      - name: Check Sensitive Files
+        run: |
+          if git ls-files | grep -E '(^|/)(\.env|\.env\..*|.*\.pem|.*\.key)$' | grep -vE '(\.example$|\.template$)'; then
+            echo "Potential sensitive files detected."
+            exit 1
+          fi
+
+          echo "Sensitive file check: OK"
+
+  docker:
+    name: Docker Build Validation
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 20
+
+    needs:
+      - quality
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Dockerfile
+        run: |
+          docker build --check .
+
+      - name: Build Docker Image
+        run: |
+          docker build \
+            --tag shaheen-ys:ci-${{ github.sha }} \
+            .
+
+      - name: Inspect Docker Image
+        run: |
+          docker image inspect shaheen-ys:ci-${{ github.sha }}
+
+      - name: Verify Container User
+        run: |
+          USER_ID="$(docker run --rm shaheen-ys:ci-${{ github.sha }} id -u)"
+
+          if [ "$USER_ID" = "0" ]; then
+            echo "Container is running as root."
+            exit 1
+          fi
+
+          echo "Container is running as non-root user: $USER_ID"
