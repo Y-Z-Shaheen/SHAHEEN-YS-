@@ -1,0 +1,38 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+
+WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        curl \
+        sqlite3 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN python -m pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir gunicorn
+
+COPY . .
+
+RUN mkdir -p \
+    data/db \
+    data/logs \
+    data/cache
+
+EXPOSE 8080
+
+HEALTHCHECK \
+    --interval=30s \
+    --timeout=10s \
+    --start-period=30s \
+    --retries=5 \
+    CMD curl --fail http://127.0.0.1:8080/health/ready || exit 1
+
+CMD ["./scripts/start-production.sh"]
