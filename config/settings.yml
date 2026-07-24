@@ -1,0 +1,36 @@
+project:
+  name: SHAHEEN-YS
+  display_name: SHAHEEN-YS
+  version: 1.0.0
+  language: ar
+  locale: ar_JO
+  timezone: Asia/Amman
+
+webui:
+  enabled: true
+  host: 0.0.0.0
+  port: 6185
+  direction: rtl
+  language: ar
+
+terminal:
+  enabled: true
+  shell: bash
+  language: ar
+
+database:
+  engine: sqlite
+  path: data/db/shaheen_ys.db
+
+plugins:
+  enabled: true
+  directory: data/plugins
+
+github:
+  enabled: true
+  repository: ""
+  branch: main
+
+security:
+  secret_key_required: true
+  admin_authentication_required: true
