@@ -1,0 +1,343 @@
+from __future__ import annotations
+
+from app.compute.api import compute_blueprint
+
+
+import os
+import socket
+from datetime import datetime, timezone
+
+from flask import Flask, jsonify, render_template
+from app.observability.logging import (
+    configure_logging,
+    get_logger,
+)
+
+from app.observability.metrics import metrics
+
+from app.observability.request_context import (
+    clear_request_id,
+    generate_request_id,
+    get_request_id,
+    set_request_id,
+)
+
+configure_logging()
+
+logger = get_logger(
+    "shaheen_ys.dashboard"
+)
+
+
+
+from app.database import check_database_health, initialize_database
+
+
+from app.compute.instance.api import instance_blueprint
+def create_dashboard_app() -> Flask:
+    app = Flask(
+
+
+        __name__,
+        template_folder="templates",
+        static_folder="static",
+    )
+    app.register_blueprint(compute_blueprint)
+    app.register_blueprint(instance_blueprint)
+
+    app.config["JSON_SORT_KEYS"] = False
+
+
+    @app.before_request
+    def before_request_observability():
+        import time
+
+        from flask import request
+
+        incoming_request_id = request.headers.get(
+            "X-Request-ID"
+        )
+
+        request_id = (
+            incoming_request_id
+            if incoming_request_id
+            and len(incoming_request_id) <= 128
+            else generate_request_id()
+        )
+
+        set_request_id(request_id)
+
+        request.environ[
+            "shaheen_ys_started_at"
+        ] = time.monotonic()
+
+    @app.after_request
+    def after_request_observability(response):
+        import time
+
+        from flask import request
+
+        started_at = request.environ.get(
+            "shaheen_ys_started_at"
+        )
+
+        duration_ms = None
+
+        if isinstance(
+            started_at,
+            float,
+        ):
+            duration_ms = round(
+                (
+                    time.monotonic()
+                    - started_at
+                )
+                * 1000,
+                2,
+            )
+
+        request_id = get_request_id()
+
+        if request_id:
+            response.headers[
+                "X-Request-ID"
+            ] = request_id
+
+        metrics.record_request(
+            response.status_code
+        )
+
+        logger.info(
+            "HTTP request completed",
+            extra={
+                "request_id": request_id,
+                "extra_data": {
+                    "method": request.method,
+                    "path": request.path,
+                    "status_code": response.status_code,
+                    "duration_ms": duration_ms,
+                },
+            },
+        )
+
+        clear_request_id()
+
+        return response
+
+    @app.teardown_request
+    def teardown_request_observability(
+        exception
+    ):
+        if exception is not None:
+            logger.exception(
+                "Unhandled request exception",
+                exc_info=(
+                    type(exception),
+                    exception,
+                    exception.__traceback__,
+                ),
+            )
+
+        clear_request_id()
+
+
+    @app.get("/health")
+    def health():
+        database_health = check_database_health()
+
+        database_is_healthy = (
+            isinstance(
+                database_health,
+                dict,
+            )
+            and database_health.get(
+                "status"
+            )
+            == "healthy"
+        )
+
+        return jsonify(
+            {
+                "status": (
+                    "healthy"
+                    if database_is_healthy
+                    else "unhealthy"
+                ),
+
+                "service": "SHAHEEN-YS",
+
+                "database": database_health,
+
+                "request_id": get_request_id(),
+            }
+        ), (
+            200
+            if database_is_healthy
+            else 503
+        )
+
+    @app.get("/health/live")
+    def liveness():
+        return jsonify(
+            {
+                "status": "alive",
+                "service": "SHAHEEN-YS",
+                "request_id": get_request_id(),
+            }
+        ), 200
+
+    @app.get("/health/ready")
+    def readiness():
+        database_health = check_database_health()
+
+        database_is_ready = (
+            isinstance(
+                database_health,
+                dict,
+            )
+            and database_health.get(
+                "status"
+            )
+            == "healthy"
+        )
+
+        return jsonify(
+            {
+                "status": (
+                    "ready"
+                    if database_is_ready
+                    else "not_ready"
+                ),
+
+                "service": "SHAHEEN-YS",
+
+                "database": database_health,
+
+                "request_id": get_request_id(),
+            }
+        ), (
+            200
+            if database_is_ready
+            else 503
+        )
+
+    @app.get("/metrics")
+    def application_metrics():
+        return jsonify(
+            {
+                "service": "SHAHEEN-YS",
+                "metrics": metrics.snapshot(),
+                "request_id": get_request_id(),
+            }
+        ), 200
+
+    @app.get("/")
+    def dashboard():
+        database_health = check_database_health()
+
+        database_is_healthy = (
+            isinstance(database_health, dict)
+            and database_health.get("status") == "healthy"
+        )
+
+        return render_template(
+            "dashboard.html",
+            logo_url="/static/assets/branding/logo.png",
+            dashboard_status=(
+                "Operational"
+                if database_is_healthy
+                else "Degraded"
+            ),
+            database_status=(
+                "Connected"
+                if database_is_healthy
+                else "Unavailable"
+            ),
+            environment=os.getenv(
+                "SHAHEEN_YS_ENV",
+                "development",
+            ),
+            hostname=socket.gethostname(),
+            version=os.getenv(
+                "SHAHEEN_YS_VERSION",
+                "1.0.0",
+            ),
+        )
+
+    @app.get("/health")
+    def health():
+        database_health = check_database_health()
+
+        database_is_healthy = (
+            isinstance(database_health, dict)
+            and database_health.get("status") == "healthy"
+        )
+
+        response = {
+            "service": "SHAHEEN-YS Dashboard",
+            "status": "healthy" if database_is_healthy else "degraded",
+            "database": database_health,
+            "hostname": socket.gethostname(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+
+        return jsonify(response), 200 if database_is_healthy else 503
+
+
+    @app.get("/health")
+    def production_health():
+        database_health = check_database_health()
+
+        database_is_healthy = (
+            isinstance(database_health, dict)
+            and database_health.get("status") == "healthy"
+        )
+
+        response = {
+            "status": "healthy" if database_is_healthy else "unhealthy",
+            "service": "SHAHEEN-YS",
+            "environment": os.getenv(
+                "SHAHEEN_YS_ENV",
+                "development",
+            ),
+            "database": database_health,
+        }
+
+        return jsonify(response), (
+            200 if database_is_healthy else 503
+        )
+
+    @app.get("/api/dashboard/status")
+    def dashboard_status():
+        database_health = check_database_health()
+
+        return jsonify(
+            {
+                "service": "dashboard",
+                "platform": "SHAHEEN-YS",
+                "status": "operational",
+                "database": database_health,
+                "environment": os.getenv(
+                    "SHAHEEN_YS_ENV",
+                    "development",
+                ),
+            }
+        )
+
+    return app
+
+
+app = create_dashboard_app()
+
+
+if __name__ == "__main__":
+    initialize_database()
+
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", "8080"))
+
+    app.run(
+        host=host,
+        port=port,
+        debug=False,
+    )

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="theme-color"
+        content="#070b14"
+    >
+
+    <meta
+        name="application-name"
+        content="SHAHEEN-YS"
+    >
+
+    <meta
+        name="description"
+        content="SHAHEEN-YS Premium Modern AI Platform"
+    >
+
+    <title>SHAHEEN-YS Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/shaheen-ys-dashboard.css'
+        ) }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='assets/branding/brand.css'
+        ) }}"
+    >
+</head>
+
+<body>
+    <main class="shaheen-dashboard">
+        <div class="shaheen-shell">
+
+            <header class="shaheen-topbar shaheen-fade-in">
+
+                <a
+                    class="shaheen-brand"
+                    href="/"
+                    aria-label="SHAHEEN-YS"
+                >
+
+                    <img
+                        class="shaheen-brand-logo"
+                        src="{{ logo_url }}"
+                        alt="SHAHEEN-YS"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <span class="shaheen-brand-content">
+
+                        <strong
+                            class="shaheen-brand-name"
+                            data-shaheen-brand-name
+                        >
+                            SHAHEEN-YS
+                        </strong>
+
+                        <small class="shaheen-brand-subtitle">
+                            Premium Modern AI Platform
+                        </small>
+
+                    </span>
+
+                </a>
+
+                <span class="shaheen-status">
+                    النظام يعمل
+                </span>
+
+            </header>
+
+            <section class="shaheen-grid">
+
+                <article
+                    class="shaheen-card shaheen-stat shaheen-fade-in"
+                >
+                    <p class="shaheen-stat-label">
+                        المنصة
+                    </p>
+
+                    <h2 class="shaheen-stat-value">
+                        SHAHEEN-YS
+                    </h2>
+                </article>
+
+                <article
+                    class="shaheen-card shaheen-stat shaheen-fade-in"
+                >
+                    <p class="shaheen-stat-label">
+                        حالة النظام
+                    </p>
+
+                    <h2 class="shaheen-stat-value">
+                        {{ dashboard_status }}
+                    </h2>
+                </article>
+
+                <article
+                    class="shaheen-card shaheen-stat shaheen-fade-in"
+                >
+                    <p class="shaheen-stat-label">
+                        قاعدة البيانات
+                    </p>
+
+                    <h2 class="shaheen-stat-value">
+                        {{ database_status }}
+                    </h2>
+                </article>
+
+            </section>
+
+            <section
+                class="shaheen-card shaheen-fade-in"
+                style="margin-top: 24px;"
+            >
+
+                <div class="shaheen-card-header">
+                    <h2>
+                        SHAHEEN-YS Control Center
+                    </h2>
+
+                    <span class="shaheen-status">
+                        Operational
+                    </span>
+                </div>
+
+                <div class="shaheen-card-body">
+
+                    <p>
+                        منصة SHAHEEN-YS تعمل حالياً بالهوية البصرية
+                        الجديدة ونظام Dashboard الموحد.
+                    </p>
+
+                    <div
+                        class="shaheen-grid"
+                        style="margin-top: 18px;"
+                    >
+
+                        <div class="shaheen-card shaheen-stat">
+                            <p class="shaheen-stat-label">
+                                البيئة
+                            </p>
+
+                            <h3>
+                                {{ environment }}
+                            </h3>
+                        </div>
+
+                        <div class="shaheen-card shaheen-stat">
+                            <p class="shaheen-stat-label">
+                                Hostname
+                            </p>
+
+                            <h3>
+                                {{ hostname }}
+                            </h3>
+                        </div>
+
+                        <div class="shaheen-card shaheen-stat">
+                            <p class="shaheen-stat-label">
+                                الإصدار
+                            </p>
+
+                            <h3>
+                                {{ version }}
+                            </h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <script
+        src="{{ url_for(
+            'static',
+            filename='js/shaheen-ys-dashboard.js'
+        ) }}"
+    ></script>
+</body>
+</html>

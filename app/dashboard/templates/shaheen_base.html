@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+    <meta
+        name="theme-color"
+        content="#070b14"
+    >
+    <meta
+        name="application-name"
+        content="SHAHEEN-YS"
+    >
+    <title>SHAHEEN-YS Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/shaheen-ys-dashboard.css'
+        ) }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='assets/branding/brand.css'
+        ) }}"
+    >
+</head>
+<body>
+    <main class="shaheen-dashboard">
+        <div class="shaheen-shell">
+            <header class="shaheen-topbar shaheen-fade-in">
+                <a
+                    class="shaheen-brand"
+                    href="/"
+                    aria-label="SHAHEEN-YS"
+                >
+                    <img
+                        class="shaheen-brand-logo"
+                        src="{{ logo_url }}"
+                        alt="SHAHEEN-YS"
+                        onerror="
+                            this.style.display='none';
+                        "
+                    >
+
+                    <span class="shaheen-brand-content">
+                        <strong
+                            class="shaheen-brand-name"
+                            data-shaheen-brand-name
+                        >
+                            SHAHEEN-YS
+                        </strong>
+
+                        <small class="shaheen-brand-subtitle">
+                            Premium Modern AI Platform
+                        </small>
+                    </span>
+                </a>
+
+                <span class="shaheen-status">
+                    النظام يعمل
+                </span>
+            </header>
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <script
+        src="{{ url_for(
+            'static',
+            filename='js/shaheen-ys-dashboard.js'
+        ) }}"
+    ></script>
+</body>
+</html>

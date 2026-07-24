@@ -1,0 +1,35 @@
+{
+  "name": "SHAHEEN-YS",
+  "display_name": "SHAHEEN-YS",
+  "short_name": "SHAHEEN-YS",
+  "description": "SHAHEEN-YS AI Platform",
+  "theme": {
+    "mode": "dark-first",
+    "supports_light_mode": true,
+    "primary": "#D4AF37",
+    "secondary": "#8B5CF6",
+    "accent": "#00D4FF",
+    "background": "#070B14",
+    "surface": "#111827",
+    "surface_elevated": "#1F2937",
+    "text": "#F8FAFC",
+    "text_muted": "#94A3B8",
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "danger": "#EF4444"
+  },
+  "typography": {
+    "font_family": "Inter",
+    "heading_weight": 800,
+    "body_weight": 400
+  },
+  "design": {
+    "style": "premium-modern",
+    "glassmorphism": true,
+    "gradients": true,
+    "animations": true,
+    "rounded_cards": true,
+    "dark_mode": true,
+    "light_mode": true
+  }
+}

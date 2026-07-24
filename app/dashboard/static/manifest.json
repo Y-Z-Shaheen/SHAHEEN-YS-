@@ -1,0 +1,16 @@
+{
+  "name": "SHAHEEN-YS",
+  "short_name": "SHAHEEN-YS",
+  "description": "SHAHEEN-YS AI Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070B14",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/static/assets/branding/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+:root {
+    --shaheen-primary: #D4AF37;
+    --shaheen-secondary: #8B5CF6;
+    --shaheen-accent: #00D4FF;
+
+    --shaheen-background: #070B14;
+    --shaheen-surface: #111827;
+    --shaheen-surface-elevated: #1F2937;
+
+    --shaheen-text: #F8FAFC;
+    --shaheen-text-muted: #94A3B8;
+
+    --shaheen-success: #22C55E;
+    --shaheen-warning: #F59E0B;
+    --shaheen-danger: #EF4444;
+
+    --shaheen-radius-sm: 8px;
+    --shaheen-radius-md: 14px;
+    --shaheen-radius-lg: 22px;
+
+    --shaheen-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    --shaheen-glass:
+        rgba(17, 24, 39, 0.72);
+
+    --shaheen-gradient:
+        linear-gradient(
+            135deg,
+            #D4AF37 0%,
+            #8B5CF6 50%,
+            #00D4FF 100%
+        );
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    color: var(--shaheen-text);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(139, 92, 246, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(0, 212, 255, 0.12),
+            transparent 35%
+        ),
+        var(--shaheen-background);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+.shaheen-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.02)
+        ),
+        var(--shaheen-glass);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: var(--shaheen-radius-lg);
+
+    box-shadow: var(--shaheen-shadow);
+
+    backdrop-filter: blur(18px);
+
+    transition:
+        transform 250ms ease,
+        border-color 250ms ease,
+        box-shadow 250ms ease;
+}
+
+.shaheen-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(212, 175, 55, 0.45);
+
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(212, 175, 55, 0.08);
+}
+
+.shaheen-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding:
+        0.75rem
+        1.25rem;
+
+    border: 0;
+
+    border-radius:
+        var(--shaheen-radius-md);
+
+    color: #ffffff;
+
+    background:
+        var(--shaheen-gradient);
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease;
+}
+
+.shaheen-button:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 12px 32px rgba(139, 92, 246, 0.28);
+}
+
+.shaheen-button:active {
+    transform: translateY(0);
+}
+
+.shaheen-brand-gradient {
+    background:
+        var(--shaheen-gradient);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.shaheen-glow {
+    box-shadow:
+        0 0 30px rgba(212, 175, 55, 0.18),
+        0 0 80px rgba(139, 92, 246, 0.12);
+}
+
+.shaheen-logo {
+    display: block;
+
+    width: 56px;
+    height: 56px;
+
+    object-fit: contain;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 0 30px rgba(212, 175, 55, 0.25);
+}
+
+.shaheen-animated-entry {
+    animation:
+        shaheen-entry 500ms ease both;
+}
+
+@keyframes shaheen-entry {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

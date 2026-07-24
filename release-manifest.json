@@ -1,0 +1,48 @@
+{
+  "product": "SHAHEEN-YS",
+  "release_type": "production",
+  "generated_at": "2026-07-24T23:34:53.265240+00:00",
+  "python_version": "3.14.6",
+  "git": {
+    "branch": "main",
+    "commit": "630e5b25e714a4a975ac17abfd1203f52f9c6dab"
+  },
+  "deployment_targets": [
+    "Railway",
+    "Docker",
+    "Linux",
+    "Self-Hosted"
+  ],
+  "health_checks": [
+    "/health",
+    "/health/live",
+    "/health/ready",
+    "/metrics"
+  ],
+  "files": [
+    {
+      "path": "wsgi.py",
+      "sha256": "8bec4925d5b9727124268a6a87e1e08809ff4c91e0a026c7d0b2aa9a2be23732"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "ad80bafed6723262d799aff17177199223f58fda951df8872dd2cc2137160833"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "a0602b89982ba1de0c93d595c781ad937bec748481803a68e4b4ecdc9d893bc6"
+    },
+    {
+      "path": "railway.toml",
+      "sha256": "2f92d36f7b0740886f03d2a78c6f12894c52dd33ed80dbf36467242eefa54b8b"
+    },
+    {
+      "path": "app/dashboard/app.py",
+      "sha256": "db34d69f4c93318bb14a50b734f4786fcba53f1869a7de528a76bd785bcddfa6"
+    },
+    {
+      "path": "app/database.py",
+      "sha256": "8418867b0e5ef3d070d7c5f88e69ca6d9b96970ed1c38fa7c69200ec5ab868b6"
+    }
+  ]
+}

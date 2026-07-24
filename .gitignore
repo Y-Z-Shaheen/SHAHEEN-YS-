@@ -30,3 +30,14 @@ data/plugins/*
 *.secret
 *.key
 *.pem
+
+# Local database
+data/db/*.db
+data/db/*.sqlite
+data/db/*.sqlite3
+
+# Generated reports
+data/reports/*.json
+
+# Runtime data
+data/logs/

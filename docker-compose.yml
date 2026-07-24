@@ -1,0 +1,53 @@
+services:
+  shaheen-ys:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: shaheen-ys
+
+    restart: unless-stopped
+
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+
+    environment:
+      SHAHEEN_YS_ENV: ${SHAHEEN_YS_ENV:-production}
+      SHAHEEN_YS_VERSION: ${SHAHEEN_YS_VERSION:-1.0.0}
+
+      HOST: 0.0.0.0
+      PORT: ${PORT:-8080}
+
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-2}
+      GUNICORN_TIMEOUT: ${GUNICORN_TIMEOUT:-120}
+
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+
+      SHAHEEN_YS_ADMIN_USERNAME: ${SHAHEEN_YS_ADMIN_USERNAME:-}
+      SHAHEEN_YS_ADMIN_PASSWORD: ${SHAHEEN_YS_ADMIN_PASSWORD:-}
+
+    volumes:
+      - shaheen_ys_data:/app/data
+      - shaheen_ys_logs:/app/logs
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl --fail --silent http://127.0.0.1:$${PORT:-8080}/health || exit 1"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+    stop_grace_period: 30s
+
+volumes:
+  shaheen_ys_data:
+    name: shaheen_ys_data
+
+  shaheen_ys_logs:
+    name: shaheen_ys_logs
