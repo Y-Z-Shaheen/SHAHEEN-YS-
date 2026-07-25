@@ -172,11 +172,23 @@ CREATE TABLE IF NOT EXISTS system_events (
     created_at  TEXT    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_api_keys_hash     ON api_keys(key_hash);
-CREATE INDEX IF NOT EXISTS idx_api_keys_active   ON api_keys(is_active);
-CREATE INDEX IF NOT EXISTS idx_sessions_id       ON sessions(session_id);
-CREATE INDEX IF NOT EXISTS idx_sessions_expires  ON sessions(expires_at);
-CREATE INDEX IF NOT EXISTS idx_events_type       ON system_events(event_type);
+CREATE TABLE IF NOT EXISTS compute_instances (
+    id          TEXT    PRIMARY KEY,
+    name        TEXT    NOT NULL UNIQUE,
+    image       TEXT    NOT NULL,
+    cpu         INTEGER NOT NULL,
+    memory_mb   INTEGER NOT NULL,
+    status      TEXT    NOT NULL,
+    created_at  TEXT    NOT NULL,
+    updated_at  TEXT    NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_api_keys_hash          ON api_keys(key_hash);
+CREATE INDEX IF NOT EXISTS idx_api_keys_active        ON api_keys(is_active);
+CREATE INDEX IF NOT EXISTS idx_sessions_id            ON sessions(session_id);
+CREATE INDEX IF NOT EXISTS idx_sessions_expires       ON sessions(expires_at);
+CREATE INDEX IF NOT EXISTS idx_events_type            ON system_events(event_type);
+CREATE INDEX IF NOT EXISTS idx_compute_instances_name ON compute_instances(name);
 """
 
 _POSTGRES_SCHEMA = """
@@ -217,11 +229,23 @@ CREATE TABLE IF NOT EXISTS system_events (
     created_at   TEXT   NOT NULL DEFAULT (NOW() AT TIME ZONE 'UTC')
 );
 
-CREATE INDEX IF NOT EXISTS idx_api_keys_hash     ON api_keys(key_hash);
-CREATE INDEX IF NOT EXISTS idx_api_keys_active   ON api_keys(is_active);
-CREATE INDEX IF NOT EXISTS idx_sessions_id       ON sessions(session_id);
-CREATE INDEX IF NOT EXISTS idx_sessions_expires  ON sessions(expires_at);
-CREATE INDEX IF NOT EXISTS idx_events_type       ON system_events(event_type);
+CREATE TABLE IF NOT EXISTS compute_instances (
+    id          TEXT    PRIMARY KEY,
+    name        TEXT    NOT NULL UNIQUE,
+    image       TEXT    NOT NULL,
+    cpu         INTEGER NOT NULL,
+    memory_mb   INTEGER NOT NULL,
+    status      TEXT    NOT NULL,
+    created_at  TEXT    NOT NULL,
+    updated_at  TEXT    NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_api_keys_hash          ON api_keys(key_hash);
+CREATE INDEX IF NOT EXISTS idx_api_keys_active        ON api_keys(is_active);
+CREATE INDEX IF NOT EXISTS idx_sessions_id            ON sessions(session_id);
+CREATE INDEX IF NOT EXISTS idx_sessions_expires       ON sessions(expires_at);
+CREATE INDEX IF NOT EXISTS idx_events_type            ON system_events(event_type);
+CREATE INDEX IF NOT EXISTS idx_compute_instances_name ON compute_instances(name);
 """
 
 

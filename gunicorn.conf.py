@@ -62,9 +62,9 @@ accesslog = "-"
 errorlog = "-"
 
 loglevel = os.getenv(
-    "SHAHEEN_YS_LOG_LEVEL",
+    "SHAHEEN_LOG_LEVEL",
     "info",
-)
+).lower()
 
 capture_output = True
 
