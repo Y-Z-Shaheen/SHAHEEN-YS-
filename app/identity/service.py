@@ -1,10 +1,19 @@
+"""
+Identity service for SHAHEEN-YS.
+
+Manages API keys and sessions using the unified database layer
+(supports both PostgreSQL and SQLite via SQLAlchemy).
+"""
+
 from __future__ import annotations
 
-import sqlite3
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from app.database import database_connection
+from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
+
+from app.database import check_database_health, database_connection, insert_and_get_id
 from app.identity.security import (
     generate_api_key,
     generate_session_token,
@@ -16,6 +25,9 @@ from app.identity.security import (
 class IdentityService:
     """
     خدمة الهوية وإدارة API Keys والجلسات.
+
+    All SQL uses SQLAlchemy text() with named parameters (:name style)
+    for compatibility with both SQLite and PostgreSQL.
     """
 
     def create_api_key(
@@ -25,54 +37,37 @@ class IdentityService:
         owner_name = owner_name.strip()
 
         if not owner_name:
-            raise ValueError(
-                "Owner name cannot be empty."
-            )
+            raise ValueError("Owner name cannot be empty.")
 
         if len(owner_name) > 200:
-            raise ValueError(
-                "Owner name is too long."
-            )
+            raise ValueError("Owner name is too long.")
 
         plain_api_key = generate_api_key()
         key_hash = hash_secret(plain_api_key)
-
         key_prefix = plain_api_key[:20]
 
-        with database_connection() as connection:
-            cursor = connection.execute(
-                """
-                INSERT INTO api_keys (
-                    owner_name,
-                    key_hash,
-                    key_prefix,
-                    is_active
-                )
-                VALUES (?, ?, ?, 1)
-                """,
-                (
-                    owner_name,
-                    key_hash,
-                    key_prefix,
-                ),
+        with database_connection() as conn:
+            key_id = insert_and_get_id(
+                conn,
+                "INSERT INTO api_keys (owner_name, key_hash, key_prefix, is_active)"
+                " VALUES (:owner_name, :key_hash, :key_prefix, 1)",
+                {
+                    "owner_name": owner_name,
+                    "key_hash": key_hash,
+                    "key_prefix": key_prefix,
+                },
             )
 
-            key_id = cursor.lastrowid
-
-            connection.execute(
-                """
-                INSERT INTO system_events (
-                    event_type,
-                    service_name,
-                    payload
-                )
-                VALUES (?, ?, ?)
-                """,
-                (
-                    "api_key_created",
-                    "identity",
-                    f"API key created for owner: {owner_name}",
+            conn.execute(
+                text(
+                    "INSERT INTO system_events (event_type, service_name, payload)"
+                    " VALUES (:event_type, :service_name, :payload)"
                 ),
+                {
+                    "event_type": "api_key_created",
+                    "service_name": "identity",
+                    "payload": f"API key created for owner: {owner_name}",
+                },
             )
 
         return {
@@ -92,21 +87,14 @@ class IdentityService:
 
         key_hash = hash_secret(api_key)
 
-        with database_connection() as connection:
-            row = connection.execute(
-                """
-                SELECT
-                    id,
-                    owner_name,
-                    key_prefix,
-                    is_active,
-                    created_at
-                FROM api_keys
-                WHERE key_hash = ?
-                LIMIT 1
-                """,
-                (key_hash,),
-            ).fetchone()
+        with database_connection() as conn:
+            row = conn.execute(
+                text(
+                    "SELECT id, owner_name, key_prefix, is_active, created_at"
+                    " FROM api_keys WHERE key_hash = :key_hash LIMIT 1"
+                ),
+                {"key_hash": key_hash},
+            ).mappings().fetchone()
 
             if row is None:
                 return None
@@ -114,13 +102,12 @@ class IdentityService:
             if not bool(row["is_active"]):
                 return None
 
-            connection.execute(
-                """
-                UPDATE api_keys
-                SET last_used_at = CURRENT_TIMESTAMP
-                WHERE id = ?
-                """,
-                (row["id"],),
+            conn.execute(
+                text(
+                    "UPDATE api_keys SET last_used_at = CURRENT_TIMESTAMP"
+                    " WHERE id = :id"
+                ),
+                {"id": row["id"]},
             )
 
             return dict(row)
@@ -130,38 +117,31 @@ class IdentityService:
         key_id: int,
     ) -> bool:
         if key_id <= 0:
-            raise ValueError(
-                "Key ID must be greater than zero."
+            raise ValueError("Key ID must be greater than zero.")
+
+        with database_connection() as conn:
+            result = conn.execute(
+                text(
+                    "UPDATE api_keys SET is_active = 0"
+                    " WHERE id = :id AND is_active = 1"
+                ),
+                {"id": key_id},
             )
 
-        with database_connection() as connection:
-            cursor = connection.execute(
-                """
-                UPDATE api_keys
-                SET is_active = 0
-                WHERE id = ?
-                AND is_active = 1
-                """,
-                (key_id,),
-            )
-
-            revoked = cursor.rowcount > 0
+            revoked = result.rowcount > 0
 
             if revoked:
-                connection.execute(
-                    """
-                    INSERT INTO system_events (
-                        event_type,
-                        service_name,
-                        payload
-                    )
-                    VALUES (?, ?, ?)
-                    """,
-                    (
-                        "api_key_revoked",
-                        "identity",
-                        f"API key ID {key_id} revoked",
+                conn.execute(
+                    text(
+                        "INSERT INTO system_events"
+                        " (event_type, service_name, payload)"
+                        " VALUES (:event_type, :service_name, :payload)"
                     ),
+                    {
+                        "event_type": "api_key_revoked",
+                        "service_name": "identity",
+                        "payload": f"API key ID {key_id} revoked",
+                    },
                 )
 
             return revoked
@@ -172,32 +152,24 @@ class IdentityService:
         lifetime_minutes: int = 60,
     ) -> dict[str, Any]:
         if lifetime_minutes <= 0:
-            raise ValueError(
-                "Session lifetime must be greater than zero."
-            )
+            raise ValueError("Session lifetime must be greater than zero.")
 
         session_id = generate_session_token()
-
         expires_at = (
-            datetime.now(timezone.utc)
-            + timedelta(minutes=lifetime_minutes)
+            datetime.now(timezone.utc) + timedelta(minutes=lifetime_minutes)
         ).isoformat()
 
-        with database_connection() as connection:
-            connection.execute(
-                """
-                INSERT INTO sessions (
-                    session_id,
-                    user_id,
-                    expires_at
-                )
-                VALUES (?, ?, ?)
-                """,
-                (
-                    session_id,
-                    user_id,
-                    expires_at,
+        with database_connection() as conn:
+            conn.execute(
+                text(
+                    "INSERT INTO sessions (session_id, user_id, expires_at)"
+                    " VALUES (:session_id, :user_id, :expires_at)"
                 ),
+                {
+                    "session_id": session_id,
+                    "user_id": user_id,
+                    "expires_at": expires_at,
+                },
             )
 
         return {
@@ -212,52 +184,36 @@ class IdentityService:
         if not session_id:
             return False
 
-        with database_connection() as connection:
-            row = connection.execute(
-                """
-                SELECT expires_at
-                FROM sessions
-                WHERE session_id = ?
-                LIMIT 1
-                """,
-                (session_id,),
-            ).fetchone()
+        with database_connection() as conn:
+            row = conn.execute(
+                text(
+                    "SELECT expires_at FROM sessions"
+                    " WHERE session_id = :session_id LIMIT 1"
+                ),
+                {"session_id": session_id},
+            ).mappings().fetchone()
 
         if row is None:
             return False
 
         try:
-            expires_at = datetime.fromisoformat(
-                row["expires_at"]
-            )
-
-            current_time = datetime.now(timezone.utc)
-
-            return current_time < expires_at
-
+            expires_at = datetime.fromisoformat(row["expires_at"])
+            return datetime.now(timezone.utc) < expires_at
         except ValueError:
             return False
 
     def health_check(self) -> dict[str, Any]:
         try:
-            with database_connection() as connection:
-                connection.execute(
-                    "SELECT 1"
-                ).fetchone()
+            with database_connection() as conn:
+                conn.execute(text("SELECT 1")).fetchone()
 
-                api_keys_count = connection.execute(
-                    """
-                    SELECT COUNT(*) AS total
-                    FROM api_keys
-                    """
-                ).fetchone()["total"]
+                api_keys_count = conn.execute(
+                    text("SELECT COUNT(*) AS total FROM api_keys")
+                ).fetchone()[0]
 
-                users_count = connection.execute(
-                    """
-                    SELECT COUNT(*) AS total
-                    FROM users
-                    """
-                ).fetchone()["total"]
+                users_count = conn.execute(
+                    text("SELECT COUNT(*) AS total FROM users")
+                ).fetchone()[0]
 
             return {
                 "status": "healthy",
@@ -266,13 +222,12 @@ class IdentityService:
                 "api_keys": api_keys_count,
                 "users": users_count,
             }
-
-        except sqlite3.Error as error:
+        except SQLAlchemyError as exc:
             return {
                 "status": "unhealthy",
                 "service": "identity",
                 "database": "unavailable",
-                "error": str(error),
+                "error": str(exc),
             }
 
 

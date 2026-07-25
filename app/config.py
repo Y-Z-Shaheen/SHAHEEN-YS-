@@ -111,17 +111,24 @@ def get_enum_env(
     allowed_values: set[str],
 ) -> str:
     """
-    Parse enum environment variable.
+    Parse enum environment variable (case-insensitive).
+
+    Compares the input against allowed_values case-insensitively and
+    returns the canonical form as it appears in allowed_values.
+    This means LOG_LEVEL values like "debug" or "DEBUG" both return
+    the uppercase canonical "DEBUG".
     """
-    value = os.getenv(name, default).lower().strip()
-    
-    if value not in allowed_values:
+    raw = os.getenv(name, default).strip()
+    lower_map = {av.lower(): av for av in allowed_values}
+    canonical = lower_map.get(raw.lower())
+
+    if canonical is None:
         logger.warning(
-            f"Invalid value for {name}: {value!r}, using default: {default}"
+            f"Invalid value for {name}: {raw!r}, using default: {default}"
         )
         return default
-    
-    return value
+
+    return canonical
 
 
 # ============================================================================
