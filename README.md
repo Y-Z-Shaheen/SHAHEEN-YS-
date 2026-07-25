@@ -1,275 +1,1063 @@
-![AstrBot-Logo-Simplified](https://github.com/user-attachments/assets/36fb04e4-cc75-4454-bd8b-049d11aa86f9)
-
-
 <div align="center">
 
-<a href="https://github.com/AstrBotDevs/AstrBot/blob/master/README_zh.md">简体中文</a> ｜
-<a href="https://github.com/AstrBotDevs/AstrBot/blob/master/README_zh-TW.md">繁體中文</a> ｜
-<a href="https://github.com/AstrBotDevs/AstrBot/blob/master/README_ja.md">日本語</a> ｜
-<a href="https://github.com/AstrBotDevs/AstrBot/blob/master/README_fr.md">Français</a> ｜
-<a href="https://github.com/AstrBotDevs/AstrBot/blob/master/README_es.md">Español</a> ｜
-<a href="https://github.com/AstrBotDevs/AstrBot/blob/master/README_ru.md">Русский</a> 
+<img src="https://i.postimg.cc/9XJ5yQZY/Picsart-26-07-21-04-44-19-389.png" alt="SHAHEEN-YS Logo" width="220"/>
 
-<br>
+# 🦅 SHAHEEN-YS
 
-<div>
-<a href="https://trendshift.io/repositories/21369" target="_blank"><img src="https://trendshift.io/api/badge/repositories/21369" alt="AstrBotDevs%2FAstrBot | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-<a href="https://hellogithub.com/repository/AstrBotDevs/AstrBot" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=d127d50cd5e54c5382328acc3bb25483&claim_uid=ZO9by7qCXgSd6Lp&t=2" alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-</div>
+### ⚡ Premium AI Infrastructure • Cloud Platform • Automation • Intelligent Systems
 
-<br>
+<p>
+  <strong>Build powerful systems. Deploy anywhere. Scale without compromise.</strong>
+</p>
 
-<div>
-<img src="https://img.shields.io/github/v/release/AstrBotDevs/AstrBot?color=76bad9" href="https://github.com/AstrBotDevs/AstrBot/releases/latest">
-<img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="python">
-<img src="https://deepwiki.com/badge.svg" href="https://deepwiki.com/AstrBotDevs/AstrBot">
-<a href="https://zread.ai/AstrBotDevs/AstrBot" target="_blank"><img src="https://img.shields.io/badge/Ask_Zread-_.svg?style=flat&color=00b0aa&labelColor=000000&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuOTYxNTYgMS42MDAxSDIuMjQxNTZDMS44ODgxIDEuNjAwMSAxLjYwMTU2IDEuODg2NjQgMS42MDE1NiAyLjI0MDFWNC45NjAxQzEuNjAxNTYgNS4zMTM1NiAxLjg4ODEgNS42MDAxIDIuMjQxNTYgNS42MDAxSDQuOTYxNTZDNS4zMTUwMiA1LjYwMDEgNS42MDE1NiA1LjMxMzU2IDUuNjAxNTYgNC45NjAxVjIuMjQwMUM1LjYwMTU2IDEuODg2NjQgNS4zMTUwMiAxLjYwMDEgNC45NjE1NiAxLjYwMDFaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00Ljk2MTU2IDEwLjM5OTlIMi4yNDE1NkMxLjg4ODEgMTAuMzk5OSAxLjYwMTU2IDEwLjY4NjQgMS42MDE1NiAxMS4wMzk5VjEzLjc1OTlDMS42MDE1NiAxNC4xMTM0IDEuODg4MSAxNC4zOTk5IDIuMjQxNTYgMTQuMzk5OUg0Ljk2MTU2QzUuMzE1MDIgMTQuMzk5OSA1LjYwMTU2IDE0LjExMzQgNS42MDE1NiAxMy43NTk5VjExLjAzOTlDNS42MDE1NiAxMC42ODY0IDUuMzE1MDIgMTAuMzk5OSA0Ljk2MTU2IDEwLjM5OTlaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik0xMy43NTg0IDEuNjAwMUgxMS4wMzg0QzEwLjY4NSAxLjYwMDEgMTAuMzk4NCAxLjg4NjY0IDEwLjM5ODQgMi4yNDAxVjQuOTYwMUMxMC4zOTg0IDUuMzEzNTYgMTAuNjg1IDUuNjAwMSAxMS4wMzg0IDUuNjAwMUgxMy43NTg0QzE0LjExMTkgNS42MDAxIDE0LjM5ODQgNS4zMTM1NiAxNC4zOTg0IDQuOTYwMVYyLjI0MDFDMTQuMzk4NCAxLjg4NjY0IDE0LjExMTkgMS42MDAxIDEzLjc1ODQgMS42MDAxWiIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNNCAxMkwxMiA0TDQgMTJaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00IDEyTDEyIDQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K&logoColor=ffffff" alt="zread"/></a>
-<a href="https://hub.docker.com/r/soulter/astrbot"><img alt="Docker pull" src="https://img.shields.io/docker/pulls/soulter/astrbot.svg?color=76bad9"/></a>
-<img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.soulter.top%2Fastrbot%2Fplugin-num&query=%24.result&suffix=%20plugins&label=Marketplace&cacheSeconds=3600">
-<img src="https://gitcode.com/Soulter/AstrBot/star/badge.svg" href="https://gitcode.com/Soulter/AstrBot">
-</div>
+<p>
+  <a href="https://github.com/">
+    <img src="https://img.shields.io/badge/Project-SHAHEEN--YS-111827?style=for-the-badge&logo=github&logoColor=white" alt="SHAHEEN-YS Project"/>
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.12%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Flask-Production-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"/>
+  <img src="https://img.shields.io/badge/Railway-Ready-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Railway"/>
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
+</p>
 
-<br>
-
-<a href="https://astrbot.app/">Documentation</a> ｜
-<a href="https://blog.astrbot.app/">Blog</a> ｜
-<a href="https://astrbot.featurebase.app/roadmap">Roadmap</a> ｜
-<a href="https://github.com/AstrBotDevs/AstrBot/issues">Issue Tracker</a> ｜
-<a href="mailto:community@astrbot.app">Email Support</a>
-</div>
-
-AstrBot is an open-source all-in-one Agent chatbot platform that integrates with mainstream instant messaging apps. It provides reliable and scalable conversational AI infrastructure for individuals, developers, and teams. Whether you're building a personal AI companion, intelligent customer service, automation assistant, or enterprise knowledge base, AstrBot enables you to quickly build production-ready AI applications within your IM platform workflows.
-
-![screenshot_1 5x_postspark_2026-02-27_22-37-45](https://github.com/user-attachments/assets/f17cdb90-52d7-4773-be2e-ff64b566af6b)
-
-## Key Features
-
-1. 💯 Free & Open Source.
-2. ✨ AI LLM Conversations, Multimodal, Agent, MCP, Skills, Knowledge Base, Persona Settings, Auto Context Compression.
-3. 🤖 Supports integration with Dify, Alibaba Cloud Bailian, Coze, and other agent platforms.
-4. 🌐 Multi-Platform: QQ, WeChat Work, Feishu, DingTalk, WeChat Official Accounts, Telegram, Slack, and [more](#supported-messaging-platforms).
-5. 📦 Plugin Extensions with 1000+ plugins available for one-click installation.
-6. 🛡️ [Agent Sandbox](https://docs.astrbot.app/use/astrbot-agent-sandbox.html) for isolated, safe execution of code, shell calls, and session-level resource reuse.
-7. 💻 WebUI Support.
-8. 🌈 Web ChatUI Support with built-in agent sandbox and web search.
-9. 🌐 Internationalization (i18n) Support.
-
-<br>
-
-<table align="center">
-  <tr align="center">
-    <th>💙 Role-playing & Emotional Companionship</th>
-    <th>✨ Proactive Agent</th>
-    <th>🚀 General Agentic Capabilities</th>
-    <th>🧩 1000+ Community Plugins</th>
-  </tr>
-  <tr>
-    <td align="center"><p align="center"><img width="984" height="1746" alt="99b587c5d35eea09d84f33e6cf6cfd4f" src="https://github.com/user-attachments/assets/89196061-3290-458d-b51f-afa178049f84" /></p></td>
-    <td align="center"><p align="center"><img width="976" height="1612" alt="c449acd838c41d0915cc08a3824025b1" src="https://github.com/user-attachments/assets/f75368b4-e022-41dc-a9e0-131c3e73e32e" /></p></td>
-    <td align="center"><p align="center"><img width="974" height="1732" alt="image" src="https://github.com/user-attachments/assets/e22a3968-87d7-4708-a7cd-e7f198c7c32e" /></p></td>
-    <td align="center"><p align="center"><img width="976" height="1734" alt="image" src="https://github.com/user-attachments/assets/0952b395-6b4a-432a-8a50-c294b7f89750" /></p></td>
-  </tr>
-</table>
-
-## Quick Start
-
-### One-Click Deployment
-
-> [!NOTE]
-> Requires [uv](https://docs.astral.sh/uv/) to be installed.
-> For macOS users: due to macOS security checks, the first run of the `astrbot` command may take longer (about 10-20s).
-
-For users who want to quickly experience AstrBot, are familiar with command-line usage, and can install a `uv` environment on their own, we recommend the `uv` one-click deployment method ⚡️:
-
-```bash
-uv tool install astrbot --python 3.12
-astrbot init # Only execute this command for the first time to initialize the environment
-astrbot run
-```
-
-Update `astrbot`:
-
-```bash
-uv tool upgrade astrbot --python 3.12
-```
-
-### One-Click Cloud Deployment (RainYun)
-
-For users who want one-click deployment and do not want to manage servers themselves, we recommend RainYun's one-click cloud deployment service ☁️:
-
-[![Deploy on RainYun](https://rainyun-apps.cn-nb1.rains3.com/materials/deploy-on-rainyun-en.svg)](https://app.rainyun.com/apps/rca/store/5994?ref=NjU1ODg0)
-
-### Docker Deployment
-
-For users familiar with containers and looking for a more stable, production-ready deployment method, we recommend deploying AstrBot with Docker / Docker Compose.
-
-Please refer to the official documentation: [Deploy AstrBot with Docker](https://docs.astrbot.app/deploy/astrbot/docker.html#%E4%BD%BF%E7%94%A8-docker-%E9%83%A8%E7%BD%B2-astrbot).
-
-### Desktop Application Deployment
-
-For users who want to use AstrBot on desktop and mainly use ChatUI, we recommend AstrBot App.
-
-Visit [AstrBot-desktop](https://github.com/AstrBotDevs/AstrBot-desktop) to download and install; this method is designed for desktop usage and is not recommended for server scenarios.
-
-### Launcher Deployment
-
-For desktop users who also want fast deployment and isolated multi-instance usage, we recommend AstrBot Launcher.
-
-Visit [AstrBot Launcher](https://github.com/Raven95676/astrbot-launcher) to download and install.
-
-### Deploy on Replit
-
-Replit deployment is maintained by the community and is suitable for online demos and lightweight trials.
-
-[![Run on Repl.it](https://repl.it/badge/github/AstrBotDevs/AstrBot)](https://repl.it/github/AstrBotDevs/AstrBot)
-
-### AUR
-
-AUR deployment targets Arch Linux users who prefer installing AstrBot through the system package workflow.
-
-Run the command below to install `astrbot-git`, then start AstrBot in your local environment.
-
-```bash
-yay -S astrbot-git
-```
-
-**More deployment methods**
-
-If you need panel-based management or deeper customization, see [BT-Panel Deployment](https://docs.astrbot.app/deploy/astrbot/btpanel.html) for BT Panel app-store setup, [1Panel Deployment](https://docs.astrbot.app/deploy/astrbot/1panel.html) for 1Panel app-market deployment, [CasaOS Deployment](https://docs.astrbot.app/deploy/astrbot/casaos.html) for NAS/home-server visual deployment, and [Manual Deployment](https://docs.astrbot.app/deploy/astrbot/cli.html) for fully custom source-based installation with `uv`.
-
-
-## ❤️ Sponsors
-
-Welcome to sponsor us via [Afdian](https://afdian.com/a/astrbot_team) or [contact us](mailto:community@astrbot.app).
-
-<p align="center">
-  <a target="_blank" href="https://astrbot.app/#/sponsors">
-    <img alt="sponsors" src="https://sponsors.astrbot.app/?v=1">
+<p>
+  <a href="https://www.instagram.com/1.0_v_?igsh=N2N5MXNwN3p4ZDY2">
+    <img src="https://img.shields.io/badge/Instagram-1.0__v__-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"/>
+  </a>
+  <a href="https://t.me/Y9_S4">
+    <img src="https://img.shields.io/badge/Telegram-Y9__S4-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
+  </a>
+  <a href="https://www.tiktok.com/@zix8ii?_r=1&_d=f3c01a6371bii9&sec_uid=">
+    <img src="https://img.shields.io/badge/TikTok-zix8ii-000000?style=for-the-badge&logo=tiktok&logoColor=white" alt="TikTok"/>
+  </a>
+  <a href="https://www.facebook.com/share/1HrfmU67VS/">
+    <img src="https://img.shields.io/badge/Facebook-Profile-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"/>
+  </a>
+  <a href="https://wa.link/lc6f5w">
+    <img src="https://img.shields.io/badge/WhatsApp-Contact-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
   </a>
 </p>
 
+</div>
 
-## Supported Messaging Platforms
+---
 
-Connect AstrBot to your favorite chat platform.
+# 🚀 Project Name
 
-| Platform | Maintainer |
-|---------|---------------|
-| QQ | Official |
-| OneBot v11 protocol implementation | Official |
-| Telegram | Official |
-| Wecom & Wecom AI Bot | Official |
-| WeChat Official Accounts | Official |
-| Feishu (Lark) | Official |
-| DingTalk | Official |
-| Slack | Official |
-| Discord | Official |
-| LINE | Official |
-| Satori | Official |
-| KOOK | Official |
-| Misskey | Official |
-| Mattermost | Official |
-| WhatsApp (Coming Soon) | Official |
-| [Matrix](https://github.com/stevessr/astrbot_plugin_matrix_adapter) | Community |
-| [Rocket.Chat](https://github.com/NET-Homeless/astrbot_plugin_rocket_chat_adapter) | Community |
-| [VoceChat](https://github.com/HikariFroya/astrbot_plugin_vocechat) | Community |
+**SHAHEEN-YS**
 
-## Supported Model Services
+SHAHEEN-YS is a premium, modular, cloud-ready software platform engineered to provide a strong foundation for intelligent infrastructure, AI-powered services, automation, APIs, dashboards, deployment workflows, observability, and scalable backend systems.
 
-| Service | Type |
-|---------|---------------|
-| OpenAI and Compatible Services | LLM Services |
-| Anthropic | LLM Services |
-| Google Gemini | LLM Services |
-| Moonshot AI | LLM Services |
-| Zhipu AI | LLM Services |
-| DeepSeek | LLM Services |
-| Ollama (Self-hosted) | LLM Services |
-| LM Studio (Self-hosted) | LLM Services |
-| [AIHubMix](https://aihubmix.com/?aff=4bfH) | LLM Services (API Gateway, supports all models) |
-| [CompShare](https://www.compshare.cn/?ytag=GPU_YY-gh_astrbot&referral_code=FV7DcGowN4hB5UuXKgpE74) | LLM Services |
-| [302.AI](https://share.302.ai/rr1M3l) | LLM Services |
-| [TokenPony](https://www.tokenpony.cn/3YPyf) | LLM Services |
-| [SiliconFlow](https://docs.siliconflow.cn/cn/usercases/use-siliconcloud-in-astrbot) | LLM Services |
-| [PPIO Cloud](https://ppio.com/user/register?invited_by=AIOONE) | LLM Services |
-| ModelScope | LLM Services |
-| OneAPI | LLM Services |
-| Dify | LLMOps Platforms |
-| Alibaba Cloud Bailian Applications | LLMOps Platforms |
-| Coze | LLMOps Platforms |
-| OpenAI Whisper | Speech-to-Text Services |
-| SenseVoice | Speech-to-Text Services |
-| Xiaomi MiMo Omni | Speech-to-Text Services |
-| OpenAI TTS | Text-to-Speech Services |
-| Gemini TTS | Text-to-Speech Services |
-| GPT-Sovits-Inference | Text-to-Speech Services |
-| GPT-Sovits | Text-to-Speech Services |
-| FishAudio | Text-to-Speech Services |
-| Edge TTS | Text-to-Speech Services |
-| Alibaba Cloud Bailian TTS | Text-to-Speech Services |
-| Azure TTS | Text-to-Speech Services |
-| Minimax TTS | Text-to-Speech Services |
-| Xiaomi MiMo TTS | Text-to-Speech Services |
-| Volcano Engine TTS | Text-to-Speech Services |
+The platform is designed with a **production-first mindset** and can run across:
 
-## ❤️ Contributing
+- ☁️ Railway
+- 🐳 Docker
+- 🐧 Linux
+- 🖥 Self-hosted environments
+- 🌐 Cloud infrastructure
+- 🏢 On-premises environments
 
-Issues and Pull Requests are always welcome! Feel free to submit your changes to this project :)
+---
 
-### How to Contribute
+## 🌌 About
 
-You can contribute by reviewing issues or helping with pull request reviews. Any issues or PRs are welcome to encourage community participation. Of course, these are just suggestions—you can contribute in any way you like. For adding new features, please discuss through an Issue first.
+SHAHEEN-YS is not just a simple application.
 
-### Development Environment
+It is an evolving software infrastructure platform designed to combine:
 
-AstrBot uses `ruff` for code formatting and linting.
+- Intelligent systems
+- AI integrations
+- Cloud-native deployment
+- API-driven architecture
+- Secure services
+- Modular backend components
+- Observability
+- Production readiness
+- Modern visual identity
+- Scalable infrastructure
 
-```bash
-git clone https://github.com/AstrBotDevs/AstrBot
-pip install pre-commit
-pre-commit install
+The platform is built to grow from a powerful personal infrastructure project into a complete ecosystem for developers, automation, AI, cloud services, and intelligent applications.
+
+---
+
+## ✨ Overview
+
+SHAHEEN-YS provides a structured foundation for building and operating modern software systems.
+
+The platform focuses on:
+
+- Clean architecture
+- Modular services
+- Secure configuration
+- Cloud deployment
+- API gateways
+- Database services
+- Compute abstractions
+- Identity services
+- Dashboard interfaces
+- Observability
+- Monitoring
+- CI/CD
+- Production deployment
+
+---
+
+## 🎯 Vision
+
+To build a powerful, intelligent, secure, and scalable software ecosystem that connects AI, cloud infrastructure, automation, and modern application development into one unified platform.
+
+> **The vision of SHAHEEN-YS is to transform complex infrastructure into an elegant, intelligent, and powerful experience.**
+
+---
+
+## 💡 Mission
+
+The mission of SHAHEEN-YS is to provide developers and technical teams with a reliable foundation for building, deploying, monitoring, and scaling modern intelligent software systems.
+
+---
+
+## 🔥 Highlights
+
+- 🦅 Premium SHAHEEN-YS visual identity
+- 🌑 Dark-first modern interface
+- ⚡ Modular architecture
+- ☁️ Railway-ready deployment
+- 🐳 Docker production support
+- 🧠 AI provider integration foundation
+- 🔐 Security-oriented architecture
+- 📊 Structured observability
+- 🧾 JSON logging
+- 🆔 Request ID tracking
+- 💾 SQLite storage layer
+- 🚀 Production readiness validation
+- 🧩 Extensible architecture
+- 🛠 Automation scripts
+- 🌐 Cloud and self-hosted deployment
+
+---
+
+## ⭐ Features
+
+- Modular application architecture
+- REST API foundation
+- Dashboard layer
+- Compute service layer
+- Instance management layer
+- Identity layer
+- API Gateway
+- Storage layer
+- Observability and monitoring
+- Health checks
+- Readiness checks
+- Liveness checks
+- Metrics endpoint
+- Structured JSON logging
+- Request correlation IDs
+- Environment-based configuration
+- Docker deployment
+- Railway deployment
+- Production WSGI support
+
+---
+
+## 🧠 AI Capabilities
+
+SHAHEEN-YS is designed to support AI-powered services through provider-based architecture.
+
+The platform can be extended to support:
+
+- Conversational AI
+- AI Agents
+- LLM APIs
+- Embeddings
+- Semantic Search
+- Retrieval-Augmented Generation
+- AI Automation
+- Intelligent Workflows
+- Knowledge Bases
+- Machine Learning Services
+
+---
+
+## 🤖 Supported Models
+
+The platform is designed to integrate with modern AI providers and model ecosystems, including:
+
+- OpenAI-compatible APIs
+- OpenAI models
+- Anthropic models
+- Google Gemini
+- DeepSeek
+- Local LLMs
+- Ollama
+- LM Studio
+- Open-source models
+- Custom AI providers
+
+Provider configuration is handled through environment variables and secure secrets management.
+
+---
+
+## 🔌 Integrations
+
+SHAHEEN-YS is designed to integrate with:
+
+- AI APIs
+- Cloud platforms
+- Databases
+- Docker
+- Railway
+- REST APIs
+- Webhooks
+- External automation systems
+- Monitoring systems
+
+---
+
+## 🧩 Plugins
+
+The architecture is designed to support future plugin capabilities.
+
+Potential plugin categories include:
+
+- AI plugins
+- Automation plugins
+- Infrastructure plugins
+- Database plugins
+- Monitoring plugins
+- Developer tools
+- External integrations
+
+---
+
+## 🛠 Tools
+
+The platform includes a collection of automation and infrastructure scripts covering:
+
+- Storage
+- Cache
+- Identity
+- API Gateway
+- Dashboard
+- Compute
+- Instance Management
+- Production Bootstrap
+- Deployment
+- Docker
+- Railway
+- Visual Identity
+- Dashboard Branding
+- Production Runtime
+- Observability
+- Production Readiness
+
+---
+
+## 🏗 Architecture
+
+SHAHEEN-YS follows a modular layered architecture.
+
+Core layers include:
+
+```text
+┌─────────────────────────────────────────────┐
+│              Presentation Layer              │
+│           Dashboard / Web Interface          │
+├─────────────────────────────────────────────┤
+│                  API Layer                   │
+│              Gateway / REST APIs             │
+├─────────────────────────────────────────────┤
+│               Service Layer                  │
+│      Compute / Identity / Instance APIs      │
+├─────────────────────────────────────────────┤
+│                Data Layer                    │
+│           SQLite / Persistent Storage        │
+├─────────────────────────────────────────────┤
+│             Observability Layer              │
+│       Logs / Metrics / Request Tracking      │
+├─────────────────────────────────────────────┤
+│              Deployment Layer                │
+│        Railway / Docker / Linux / Cloud      │
+└─────────────────────────────────────────────┘
 ```
 
+---
+
+## 📐 System Design
+
+The system is designed around:
+
+- Separation of concerns
+- Modular services
+- Clear interfaces
+- Environment-based configuration
+- Secure secret handling
+- Production observability
+- Deployment portability
+
+---
+
+## 🔄 Workflow
+
+Typical platform workflow:
+
+```text
+Request
+   ↓
+API Gateway
+   ↓
+Authentication / Security
+   ↓
+Service Layer
+   ↓
+Database / External Provider
+   ↓
+Structured Logging
+   ↓
+Metrics
+   ↓
+Response
+```
+
+---
+
+## 📊 Performance
+
+Performance principles:
+
+- Minimal dependencies
+- Efficient request processing
+- Lightweight storage foundation
+- Modular service loading
+- Structured logging
+- Production WSGI support
+- Containerized deployment
+- Health monitoring
+
+---
+
+## 🔐 Security
+
+Security is a core architectural priority.
+
+The platform is designed to support:
+
+- Environment-based secrets
+- API key isolation
+- Secure configuration
+- Request validation
+- Rate limiting
+- Security middleware
+- Production secret management
+- Git secret scanning
+- No hardcoded credentials
+
+> Never commit real API keys, passwords, tokens, or private credentials to Git.
+
+---
+
+## 🛡 Privacy
+
+SHAHEEN-YS is designed with privacy-conscious infrastructure principles.
+
+Sensitive data should be:
+
+- Stored securely
+- Excluded from Git
+- Managed through environment variables
+- Protected using platform secrets
+- Never exposed through logs
+
+---
+
+## 🌐 Deployment
+
+Supported deployment targets:
+
+- Railway
+- Docker
+- Docker Compose
+- Linux
+- Self-hosted servers
+- Cloud infrastructure
+
+---
+
+## ☁️ Cloud Deployment
+
+SHAHEEN-YS is prepared for cloud deployment using:
+
+- Railway
+- Container-based platforms
+- Cloud VPS
+- Managed infrastructure
+
+Production deployment should use:
+
+- Environment secrets
+- WSGI server
+- Health checks
+- Readiness checks
+- Structured logging
+- Metrics
+
+---
+
+## 🖥 Self Hosting
+
+The platform can be deployed on a Linux server using:
+
+- Python
+- Docker
+- Docker Compose
+- Nginx
+- PostgreSQL-compatible future storage layers
+- Systemd or container orchestration
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd SHAHEEN-YS
+```
+
+Create a virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create environment configuration:
+
+```bash
+cp .env.example .env
+```
+
+---
+
+## ⚙️ Configuration
+
+Configuration is controlled through environment variables.
+
+Recommended environments:
+
+- development
+- staging
+- production
+
+---
+
+## 🔑 Environment Variables
+
+Typical configuration includes:
+
+```env
+SHAHEEN_YS_ENV=production
+SHAHEEN_YS_DASHBOARD_HOST=0.0.0.0
+SHAHEEN_YS_DASHBOARD_PORT=8080
+
+OPENAI_API_KEY=
+ANTHROPIC_API_KEY=
+GOOGLE_API_KEY=
+
+RAILWAY_TOKEN=
+```
+
+Never commit the real values of secrets.
+
+---
+
+## 💻 Development
+
+Run the application locally:
+
+```bash
+export PYTHONPATH="$(pwd)"
+python3 -m app.dashboard.app
+```
+
+---
+
+## 🎨 Frontend Development
+
+The frontend layer uses:
+
+- HTML
+- CSS
+- JavaScript
+- Centralized branding
+- Responsive dashboard design
+- Dark-first visual system
+
+Brand assets are located under:
+
+```text
+app/dashboard/static/
+```
+
+---
+
+## ⚙️ Backend Development
+
+The backend is structured around modular Python services.
+
+Main components:
+
+```text
+app/
+├── compute/
+├── dashboard/
+├── database.py
+├── gateway/
+├── identity/
+└── observability/
+```
+
+---
+
+## 🧪 Testing
+
+Testing includes:
+
+- Python syntax validation
+- Import validation
+- Dashboard tests
+- Gateway tests
+- Identity tests
+- Observability tests
+- Production readiness checks
+
+---
+
+## ✅ Quality Assurance
+
+The project uses automated validation scripts to verify:
+
+- Python syntax
+- WSGI imports
+- Required routes
+- Environment configuration
+- Deployment files
+- Git secret safety
+- Production readiness
+
+---
+
+## 📚 Documentation
+
+Documentation is continuously evolving with the platform.
+
+Important documentation files include:
+
+- `README.md`
+- `BRANDING.md`
+- `.env.example`
+- Deployment configuration
+- Production readiness reports
+
+---
+
+## 🔗 API Documentation
+
+Important endpoints include:
+
+```text
+GET /health
+GET /health/live
+GET /health/ready
+GET /metrics
+GET /api/dashboard/status
+```
+
+---
+
+## 🗄 Database
+
+The current storage foundation uses SQLite.
+
+Database location:
+
+```text
+data/db/shaheen_ys.db
+```
+
+Database schema:
+
+```text
+data/db/schema.sql
+```
+
+---
+
+## 🧠 Machine Learning Pipeline
+
+The architecture is prepared for future AI and machine learning pipelines including:
+
+- Data ingestion
+- Preprocessing
+- Embeddings
+- Vector search
+- Model inference
+- Evaluation
+- Monitoring
+
+---
+
+## 📁 Project Structure
+
+```text
+SHAHEEN-YS/
+├── app/
+├── data/
+├── scripts/
+├── Dockerfile
+├── docker-compose.yml
+├── railway.toml
+├── requirements.txt
+├── wsgi.py
+├── BRANDING.md
+├── README.md
+└── release-manifest.json
+```
+
+---
+
+## 🗂 Repository Structure
+
+The repository is organized into independent layers to improve maintainability, scalability, and deployment portability.
+
+---
+
+## 🧬 Technology Stack
+
+- Python
+- Flask
+- SQLite
+- Docker
+- Docker Compose
+- Railway
+- WSGI
+- HTML
+- CSS
+- JavaScript
+- Git
+
+---
+
+## 🛠 Developer Tools
+
+Recommended tools:
+
+- Git
+- Python
+- Docker
+- Docker Compose
+- curl
+- Ruff
+- pytest
+- Railway CLI
+
+---
+
+## 🧰 Requirements
+
+- Python 3.12+
+- Git
+- pip
+- Docker for container deployment
+- Railway account for Railway deployment
+
+---
+
+## 📋 Prerequisites
+
+Before deployment:
+
+1. Install Python.
+2. Configure environment variables.
+3. Configure AI provider secrets if required.
+4. Configure deployment platform secrets.
+5. Run the production readiness script.
+
+---
+
+## 🚀 Quick Start
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd SHAHEEN-YS
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+cp .env.example .env
+
+export PYTHONPATH="$(pwd)"
+
+python3 -m app.dashboard.app
+```
+
+---
+
+## 📝 Usage
+
+After starting the application:
+
+```text
+http://127.0.0.1:8080
+```
+
+Health check:
+
+```bash
+curl http://127.0.0.1:8080/health
+```
+
+Liveness:
+
+```bash
+curl http://127.0.0.1:8080/health/live
+```
+
+Readiness:
+
+```bash
+curl http://127.0.0.1:8080/health/ready
+```
+
+Metrics:
+
+```bash
+curl http://127.0.0.1:8080/metrics
+```
+
+---
+
+## 💬 Examples
+
+The platform can be used as a foundation for:
+
+- AI applications
+- Cloud services
+- Automation platforms
+- Intelligent dashboards
+- API platforms
+- Internal infrastructure
+- Developer tools
+
+---
+
+## 🎨 Customization
+
+The visual identity is centralized through:
+
+```text
+app/dashboard/static/assets/branding/
+app/dashboard/static/css/
+app/dashboard/static/js/
+```
+
+---
+
+## 🔧 Advanced Configuration
+
+Advanced deployments may configure:
+
+- Custom host
+- Custom port
+- Logging level
+- Environment
+- AI providers
+- Database configuration
+- Deployment secrets
+
+---
+
+## 🧱 Building From Source
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd SHAHEEN-YS
+pip install -r requirements.txt
+```
+
+---
+
+## 🐳 Docker
+
+Build:
+
+```bash
+docker build -t shaheen-ys .
+```
+
+Run:
+
+```bash
+docker run --env-file .env -p 8080:8080 shaheen-ys
+```
+
+Docker Compose:
+
+```bash
+docker compose up -d --build
+```
+
+---
+
+## ☸️ Kubernetes
+
+The architecture is prepared for future Kubernetes deployment through:
+
+- Container images
+- Health checks
+- Readiness checks
+- Stateless application design
+- Environment configuration
+
+---
+
+## ☁️ Infrastructure
+
+Infrastructure targets include:
+
+- Railway
+- Docker
+- Linux
+- VPS
+- Cloud platforms
+- Self-hosted servers
+
+---
+
+## 🔄 CI/CD
+
+The project is designed to support automated pipelines for:
+
+- Testing
+- Syntax validation
+- Security checks
+- Docker builds
+- Deployment
+
+---
+
+## 🔁 Continuous Integration
+
+CI pipelines should validate:
+
+- Python syntax
+- Application imports
+- Test suites
+- Secret safety
+- Docker builds
+- Production readiness
+
+---
+
+## 📈 Roadmap
+
+Future development areas:
+
+- Advanced AI agent layer
+- PostgreSQL support
+- Redis support
+- Vector database support
+- Kubernetes manifests
+- Advanced authentication
+- Multi-tenant architecture
+- Distributed compute
+- Advanced dashboard analytics
+
+---
+
+## 🗓 Milestones
+
+Current milestones focus on:
+
+- Core architecture
+- Storage
+- Identity
+- Gateway
+- Compute
+- Dashboard
+- Branding
+- Deployment
+- Observability
+- Production readiness
+
+---
+
+## 🚧 Current Status
+
+**Production Ready Foundation**
+
+The current platform foundation has been validated for:
+
+- WSGI import
+- Flask routes
+- Health endpoints
+- Environment configuration
+- Deployment files
+- Observability
+- Production readiness
+
+---
+
+## 🐛 Known Issues
+
+The platform is actively evolving.
+
+Potential future improvements include:
+
+- Expanded test coverage
+- More advanced database backends
+- More deployment targets
+- Enhanced AI orchestration
+- Distributed services
+
+---
+
+## 📝 Changelog
+
+Changes are tracked through Git history and future release notes.
+
+---
+
+## 🔄 Migration Guide
+
+Migration instructions will be added as major architectural versions are released.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+Recommended contribution workflow:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Implement the change.
+4. Run tests.
+5. Run production readiness checks.
+6. Open a Pull Request.
+
+---
+
+## 🧑‍💻 Contributors
+
+SHAHEEN-YS is built with a focus on engineering quality, modular architecture, and continuous improvement.
+
+---
+
+## 💖 Sponsors
+
+Support for the project helps enable:
+
+- Infrastructure development
+- AI experimentation
+- Cloud deployment
+- Open-source development
+- Documentation
+- Community growth
+
+---
 
 ## 🌍 Community
 
-### QQ Groups
+The SHAHEEN-YS community is built around:
 
-We have 15+ chat groups, please see: [Community](https://docs.astrbot.app/community.html) for details.
+- Developers
+- AI enthusiasts
+- Cloud engineers
+- Infrastructure engineers
+- Open-source contributors
 
-### Discord Server
+---
 
-<a href="https://discord.gg/hAVk6tgV36"><img alt="Discord_community" src="https://img.shields.io/badge/Discord-AstrBot-purple?style=for-the-badge&color=76bad9"></a>
+## 💬 Discussions
 
-## ❤️ Special Thanks
+Technical discussions can focus on:
 
-Special thanks to all Contributors and plugin developers for their contributions to AstrBot ❤️
+- Architecture
+- AI
+- Cloud infrastructure
+- Deployment
+- Security
+- Automation
 
-<a href="https://github.com/AstrBotDevs/AstrBot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=AstrBotDevs/AstrBot&max=300&columns=15" />
-</a>
+---
 
-Open Source Friends ❤️
+## 📢 Announcements
 
-- [NapNeko/NapCatQQ](https://github.com/NapNeko/NapCatQQ) - The amazing cat framework
-- [Mai-with-u/MaiBot](https://github.com/Mai-with-u/MaiBot) - The powerful "digital life" in your QQ! 
+Major project announcements and releases will be published through the project's official communication channels.
+
+---
+
+## 📜 License
+
+The license of the project is defined by the repository's license configuration.
+
+---
+
+## ⚖️ Legal
+
+Users are responsible for complying with applicable laws, regulations, third-party service terms, and software licenses.
+
+---
+
+## 🙏 Acknowledgements
+
+SHAHEEN-YS is built using the broader open-source ecosystem and the work of developers around the world.
+
+---
 
 ## ⭐ Star History
 
-> [!TIP]
-> If this project has helped you in your life or work, or if you're interested in its future development, please give the project a Star. It's the driving force behind maintaining this open-source project <3
+If SHAHEEN-YS is useful to you, consider giving the repository a ⭐ Star.
+
+---
+
+# 👨‍💻 Developer
 
 <div align="center">
 
-[![Star History Chart](https://api.star-history.com/svg?repos=astrbotdevs/astrbot&type=Date)](https://star-history.com/#astrbotdevs/astrbot&Date)
+## Y. Z. SHAHEEN
+
+### Software Developer • Systems Engineer • AI & Cloud Infrastructure Builder
 
 </div>
 
-<div align="center">
+Y. Z. SHAHEEN is a software developer focused on designing and building modern software systems across:
 
-_Companionship and capability should never be at odds. What we aim to create is a robot that can understand emotions, provide genuine companionship, and reliably accomplish tasks._
+- Web Development
+- Backend Engineering
+- AI Integrations
+- Cloud Infrastructure
+- DevOps
+- APIs
+- Databases
+- Automation
+- Distributed Systems
 
-_私は、高性能ですから!_
+The engineering philosophy behind SHAHEEN-YS is based on:
 
-<img src="https://files.astrbot.app/watashiwa-koseino-desukara.gif" width="100"/>
-</div>
+> **Clean Code. Strong Architecture. Secure Systems. Scalable Infrastructure.**
+
+The goal is not to build software that merely works.
+
+The goal is to build systems
