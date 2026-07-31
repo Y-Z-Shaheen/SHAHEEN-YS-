@@ -57,4 +57,4 @@ pyotp>=2.9.0
 # PostgreSQL driver — required for DATABASE_URL / production use
 psycopg2-binary>=2.9.9
 # Flask — SHAHEEN-YS dashboard layer
-flask>=3.0.0
+flask>=3.1.3
